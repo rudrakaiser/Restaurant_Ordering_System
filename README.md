@@ -1,18 +1,98 @@
-## Getting Started
+# 🍴 Restaurant Ordering System
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## 📌 Overview
 
-## Folder Structure
+This is a simple **Restaurant Ordering System** built using **Java** and **Swing GUI** as part of the **Object-Oriented Programming with Java** course at **Premier University, Chittagong**.
 
-The workspace contains two folders by default, where:
+The project demonstrates all **four pillars of OOP**:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+* **Encapsulation**
+* **Inheritance**
+* **Polymorphism**
+* **Abstraction**
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+It also includes **interface**, **abstract classes**, **exception handling**, and uses **ArrayList / HashMap** for data management.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+The application allows customers' **orders to be placed, stored, and bills to be generated** in Bangladeshi currency (BDT).
 
-## Dependency Management
+---
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## ✨ Features
+
+* 📋 Add items to an order (Starters, Main Course, Desserts).
+* 🛒 Store multiple orders with unique Order IDs.
+* 🔍 Retrieve orders by ID.
+* 💰 Generate bills in BDT (integer values, no decimals).
+* ❌ Handles invalid inputs with proper exception handling.
+* 🖥️ User-friendly **Swing GUI interface** for interaction.
+
+---
+
+## 🏗️ Project Structure
+
+```
+src/
+│
+├── restaurant/
+│   ├── MenuItem.java        # Abstract base class
+│   ├── StarterItem.java     # Inherited class
+│   ├── MainCourseItem.java  # Inherited class
+│   ├── DessertItem.java     # Inherited class
+│   ├── OrderItem.java       # Represents an item in an order
+│   ├── Order.java           # Holds multiple OrderItems
+│   ├── DataStore.java       # Stores all orders (HashMap)
+│   └── RestaurantApp.java   # Swing GUI main application
+```
+
+---
+
+## ⚙️ Installation & Run
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/restaurant-management.git
+   cd restaurant-management
+   ```
+
+2. Compile the project:
+
+   ```bash
+   javac src/restaurant/*.java
+   ```
+
+3. Run the application:
+
+   ```bash
+   java src/restaurant/RestaurantApp
+   ```
+
+---
+
+## 📷 GUI Preview
+
+![](assets/appInterface.png)
+
+---
+
+## 🧑‍🤝‍🧑 Team Members
+
+*  Rudra Kaiser
+*  Nafiz Nasim
+*  Abrar Yeasir
+
+---
+
+## 📚 Technologies Used
+
+* Java 17
+* Swing (for GUI)
+* HashMap & ArrayList (for data handling)
+
+---
+
+## 📝 License
+
+This project is for **academic purposes only**.
+
+---
