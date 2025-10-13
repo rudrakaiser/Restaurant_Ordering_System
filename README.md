@@ -39,14 +39,16 @@ The application allows customers' **orders to be placed, stored, and bills to be
 src/
 │
 ├── restaurant/
-│   ├── MenuItem.java        # Abstract base class
-│   ├── StarterItem.java     # Inherited class
-│   ├── MainCourseItem.java  # Inherited class
-│   ├── DessertItem.java     # Inherited class
-│   ├── OrderItem.java       # Represents an item in an order
-│   ├── Order.java           # Holds multiple OrderItems
-│   ├── DataStore.java       # Stores all orders (HashMap)
-│   └── RestaurantApp.java   # Swing GUI main application
+│   ├── MenuItem.java        # Abstract base class for all menu items
+│   ├── FoodItem.java        # Abstract class for food items
+│   ├── StarterItem.java     # Inherited from FoodItem
+│   ├── MainCourseItem.java  # Inherited from FoodItem
+│   ├── DessertItem.java     # Inherited from FoodItem
+│   ├── DrinkItem.java       # Inherited from MenuItem
+│   ├── OrderItem.java       # Represents a menu item + quantity in an order
+│   ├── Order.java           # Holds multiple OrderItems and generates bill
+│   ├── DataStore.java       # Stores all orders in memory (HashMap)
+│   └── RestaurantApp.java   # Main Swing GUI application
 ```
 
 ---
