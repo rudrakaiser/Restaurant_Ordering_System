@@ -13,8 +13,13 @@ public class Order {
         this.items = new ArrayList<>();
     }
 
-    public int getOrderId() { return orderId; }
-    public List<OrderItem> getItems() { return items; }
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
 
     public void addItem(OrderItem item) {
         items.add(item);

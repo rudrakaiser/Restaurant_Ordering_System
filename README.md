@@ -1,6 +1,6 @@
 # 🍴 Restaurant Ordering System
 
-## 📌 Overview
+## 📌 Project Overview
 
 This is a simple **Restaurant Ordering System** built using **Java** and **Swing GUI** as part of the **Object-Oriented Programming with Java** course at **Premier University, Chittagong**.
 
@@ -19,12 +19,17 @@ The application allows customers' **orders to be placed, stored, and bills to be
 
 ## ✨ Features
 
-* 📋 Add items to an order (Starters, Main Course, Desserts).
-* 🛒 Store multiple orders with unique Order IDs.
-* 🔍 Retrieve orders by ID.
-* 💰 Generate bills in BDT (integer values, no decimals).
-* ❌ Handles invalid inputs with proper exception handling.
-* 🖥️ User-friendly **Swing GUI interface** for interaction.
+* View and select menu items in different categories:
+
+  * **Starters** (`StarterItem`)
+  * **Main Course** (`MainCourseItem`)
+  * **Drinks** (`DrinkItem`)
+  * **Desserts** (`DessertItem`)
+* Add items to a current order.
+* Save orders in memory (`DataStore`).
+* Find an order by Order ID.
+* Generate and display the bill for a specific order.
+* Simple GUI built with **Java Swing**.
 
 ---
 
