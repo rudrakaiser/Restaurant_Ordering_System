@@ -20,4 +20,8 @@ public class OrderItem {
     public int getTotalPrice() {
         return item.getPrice() * quantity;
     }
+
+    public void setQuantity(int quantity) {
+    this.quantity = quantity;
+}
 }
