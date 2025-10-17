@@ -81,7 +81,7 @@ restaurant/
 ![](assets/welcomeScreen.png)
 
 ### 2. Main Interface
-![](assets/appInterface.png)
+![](assets/applicationInterface.png)
 
 ---
 
