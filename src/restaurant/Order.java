@@ -41,4 +41,8 @@ public class Order {
         }
         return total;
     }
+
+    public int getTotalPrice() {
+        return generateBill();  // generateBill() already calculates total
+    }
 }

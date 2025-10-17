@@ -381,6 +381,24 @@ public class RestaurantApp {
         });
 
         // Generate Bill (UPDATED: show OK and Paid buttons)
+        // billBtn.addActionListener(e -> {
+        //     String input = JOptionPane.showInputDialog(mainFrame,"Enter Order ID to generate bill:");
+        //     if(input != null && !input.isEmpty()){
+        //         try {
+        //             int id = Integer.parseInt(input);
+        //             Order found = dataStore.getOrderById(id);
+        //             if(found != null){
+        //                 showBillWithActions(found);
+        //             } else {
+        //                 JOptionPane.showMessageDialog(mainFrame,"❌ Order ID not found!");
+        //             }
+        //         } catch(NumberFormatException ex){
+        //             JOptionPane.showMessageDialog(mainFrame,"Invalid Order ID!");
+        //         }
+        //     }
+        // });
+
+        // Generate Bill button
         billBtn.addActionListener(e -> {
             String input = JOptionPane.showInputDialog(mainFrame,"Enter Order ID to generate bill:");
             if(input != null && !input.isEmpty()){
@@ -388,7 +406,7 @@ public class RestaurantApp {
                     int id = Integer.parseInt(input);
                     Order found = dataStore.getOrderById(id);
                     if(found != null){
-                        showBillWithActions(found);
+                        new BillDialog(mainFrame, dataStore, found); // <-- এখানেই ব্যবহার
                     } else {
                         JOptionPane.showMessageDialog(mainFrame,"❌ Order ID not found!");
                     }
@@ -397,6 +415,7 @@ public class RestaurantApp {
                 }
             }
         });
+
 
         // All Orders -> open popup window
         allOrdersBtn.addActionListener(e -> {

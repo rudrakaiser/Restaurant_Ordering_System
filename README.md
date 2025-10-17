@@ -20,7 +20,6 @@ The application allows customers' **orders to be placed, stored, and bills to be
 ## ✨ Features
 
 * View and select menu items in different categories:
-
   * **Starters** (`StarterItem`)
   * **Main Course** (`MainCourseItem`)
   * **Drinks** (`DrinkItem`)
@@ -36,19 +35,19 @@ The application allows customers' **orders to be placed, stored, and bills to be
 ## 🏗️ Project Structure
 
 ```
-src/
-│
-├── restaurant/
-│   ├── MenuItem.java        # Abstract base class for all menu items
-│   ├── FoodItem.java        # Abstract class for food items
-│   ├── StarterItem.java     # Inherited from FoodItem
-│   ├── MainCourseItem.java  # Inherited from FoodItem
-│   ├── DessertItem.java     # Inherited from FoodItem
-│   ├── DrinkItem.java       # Inherited from MenuItem
-│   ├── OrderItem.java       # Represents a menu item + quantity in an order
-│   ├── Order.java           # Holds multiple OrderItems and generates bill
-│   ├── DataStore.java       # Stores all orders in memory (HashMap)
-│   └── RestaurantApp.java   # Main Swing GUI application
+restaurant/
+├── DataStore.java             // Stores all orders using HashMap
+├── MenuItem.java              // Abstract base class (name, price, getCategory)
+├── FoodItem.java              // Inherits MenuItem, adds 'type' (Main/Dessert etc.)
+├── MainCourseItem.java        // Specific FoodItem (type = "Main Course")
+├── DessertItem.java           // Specific FoodItem (type = "Dessert")
+├── DrinkItem.java             // Specific MenuItem (with size and Drink category)
+├── StarterItem.java           // Specific FoodItem (type = "Starter")
+├── Order.java                 // Handles order items, total bill, order ID, etc.
+├── OrderItem.java             // Represents an individual item in an orde
+├── RestaurantApp.java         // Main Swing GUI (welcome screen + order panel)
+├── AllOrdersWindow.java       // Popup window to display all orders
+└── BillDialog.java            // Replaces inline bill window (shows OK + Paid buttons)
 ```
 
 ---
@@ -78,15 +77,27 @@ src/
 
 ## 📷 GUI Preview
 
+### 1. Welcome Screen
+![](assets/welcomeScreen.png)
+
+### 2. Main Interface
 ![](assets/appInterface.png)
 
 ---
 
 ## 🧑‍🤝‍🧑 Team Members
 
-*  Rudra Kaiser
-*  Nafiz Nasim
-*  Abrar Yeasir
+### 1. Rudra Kaiser (Project Lead)
+
+*  Responsible for system design, major implementation, and Swing GUI integration.
+
+### 2. Nafiz Nasim
+
+* Assisted in testing, GUI layout adjustments, and debugging minor logic errors.
+
+### 3. Abrar Yeasir
+
+* Worked on class-level design, documentation support, and basic testing tasks.
 
 ---
 
