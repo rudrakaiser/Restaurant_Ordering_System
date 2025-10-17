@@ -2,6 +2,7 @@ package restaurant;
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.List;
 
 public class RestaurantApp {
     private JFrame mainFrame;
@@ -41,24 +42,18 @@ public class RestaurantApp {
 
                 // Create gradient for text
                 GradientPaint gradient = new GradientPaint(
-                    0, 0, new Color(255, 215, 0),      // top - golden yellow
-                    0, getHeight(), new Color(255, 100, 0)  // bottom - deep orange
+                    0, 0, new Color(255, 215, 0),
+                    0, getHeight(), new Color(255, 100, 0)
                 );
 
                 // Shadow layer
                 FontMetrics fm = g2.getFontMetrics(getFont());
                 String text = "Welcome To The\nRestaurant Ordering System";
 
-                // Soft outer glow
+                // Soft outer glow (minimal, avoid drawing errors)
                 g2.setColor(new Color(0, 0, 0, 120));
-                for (int i = -2; i <= 2; i++) {
-                    for (int j = -2; j <= 2; j++) {
-                        if (Math.abs(i) + Math.abs(j) > 0) {
-                            g2.drawString("", i, j);
-                        }
-                    }
-                }
-
+                // (Note: we rely on JLabel's paint for actual text drawing)
+                
                 g2.setPaint(gradient);
                 super.paintComponent(g2);
                 g2.dispose();
@@ -71,17 +66,14 @@ public class RestaurantApp {
         welcomeLabel.setOpaque(false);
         welcomeLabel.setBorder(BorderFactory.createEmptyBorder(80, 0, 0, 0));
 
-
-
         // ===== Button =====
         JButton getStartedBtn = new JButton("Get Started") {
             @Override
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g.create();
-                // Gradient Background
                 GradientPaint gp = new GradientPaint(
-                    0, 0, new Color(255, 140, 0),    // orange start
-                    getWidth(), getHeight(), new Color(255, 90, 0) // red-orange end
+                    0, 0, new Color(255, 140, 0),
+                    getWidth(), getHeight(), new Color(255, 90, 0)
                 );
                 g2.setPaint(gp);
                 g2.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);
@@ -89,12 +81,9 @@ public class RestaurantApp {
                 g2.dispose();
             }
             @Override
-            protected void paintBorder(Graphics g) {
-                // Remove default border
-            }
+            protected void paintBorder(Graphics g) { }
         };
 
-        // ===== Button Style =====
         getStartedBtn.setFont(new Font("Segoe UI", Font.BOLD, 20));
         getStartedBtn.setForeground(Color.WHITE);
         getStartedBtn.setFocusPainted(false);
@@ -103,7 +92,6 @@ public class RestaurantApp {
         getStartedBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         getStartedBtn.setPreferredSize(new Dimension(200, 50));
 
-        // ===== Hover Effect =====
         getStartedBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -119,18 +107,16 @@ public class RestaurantApp {
             }
         });
 
-        // ===== Button Action =====
         getStartedBtn.addActionListener(e -> {
             welcomeFrame.dispose();
             initializeMainApp();
         });
 
         JPanel btnPanel = new JPanel();
-        btnPanel.setOpaque(false); // Transparent panel
+        btnPanel.setOpaque(false);
         btnPanel.add(getStartedBtn);
         btnPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
 
-        // ===== Add Components to background =====
         backgroundLabel.add(welcomeLabel, BorderLayout.CENTER);
         backgroundLabel.add(btnPanel, BorderLayout.SOUTH);
 
@@ -138,25 +124,18 @@ public class RestaurantApp {
         welcomeFrame.setVisible(true);
     }
 
-    // ===== Category Label Factory =====
+    // Category label factory (unchanged)
     private JLabel createCategoryLabel(String text) {
         JLabel label = new JLabel(text, JLabel.CENTER);
         label.setFont(new Font("Serif", Font.BOLD, 28));
         label.setForeground(new Color(0, 0, 0));
         label.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
 
-        // Subtle shadow effect
         label.setUI(new javax.swing.plaf.basic.BasicLabelUI() {
             @Override
             public void paint(Graphics g, JComponent c) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-                
-                // Shadow
-                // g2.setColor(new Color(0, 0, 0, 100));
-                // g2.drawString(label.getText(), 3, label.getHeight() - 7);
-                
-                // Main text
                 g2.setColor(label.getForeground());
                 g2.drawString(label.getText(), 2, label.getHeight() - 8);
                 g2.dispose();
@@ -197,7 +176,9 @@ public class RestaurantApp {
         MenuItem cake = new DessertItem("Chocolate Cake", 200);
         MenuItem pudding = new DessertItem("Pudding", 150);
 
-        // ===== Buttons =====
+        // ===== Buttons and icons (same as before) =====
+        // For brevity, keep same icon loading & button creation code as before...
+        // I'll recreate each button as in your original file:
 
         // Samosa
         ImageIcon samosaImage = new ImageIcon("src/restaurant/images/samosa.png");
@@ -235,7 +216,7 @@ public class RestaurantApp {
         pizzaBtn.setForeground(Color.WHITE);
         pizzaBtn.setFocusPainted(false);
 
-        // Biriyani
+        // Biryani
         ImageIcon biriyaniImage = new ImageIcon("src/restaurant/images/biriyani.png");
         Image scaledBiriyani = biriyaniImage.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         ImageIcon biriyaniIcon = new ImageIcon(scaledBiriyani);
@@ -308,7 +289,6 @@ public class RestaurantApp {
         puddingBtn.setFocusPainted(false);
 
         // ===== Add to panel =====
-
         menuPanel.add(createCategoryLabel("1. Starters"));
         menuPanel.add(samosaBtn);
         menuPanel.add(springRollBtn);
@@ -329,7 +309,6 @@ public class RestaurantApp {
         menuPanel.add(cakeBtn);
         menuPanel.add(puddingBtn);
 
-
         // ====== Action Listeners ======
         samosaBtn.addActionListener(e -> addItem(samosa));
         springRollBtn.addActionListener(e -> addItem(springRoll));
@@ -348,7 +327,6 @@ public class RestaurantApp {
         puddingBtn.addActionListener(e -> addItem(pudding));
 
         // ===== Control Buttons =====
-
         controlPanel = new JPanel();
         Font btnFont = new Font("Arial", Font.BOLD, 16);
         JButton saveBtn = new JButton("Save Order");
@@ -402,7 +380,7 @@ public class RestaurantApp {
             }
         });
 
-        // Generate Bill
+        // Generate Bill (UPDATED: show OK and Paid buttons)
         billBtn.addActionListener(e -> {
             String input = JOptionPane.showInputDialog(mainFrame,"Enter Order ID to generate bill:");
             if(input != null && !input.isEmpty()){
@@ -410,7 +388,7 @@ public class RestaurantApp {
                     int id = Integer.parseInt(input);
                     Order found = dataStore.getOrderById(id);
                     if(found != null){
-                        showBill(found);
+                        showBillWithActions(found);
                     } else {
                         JOptionPane.showMessageDialog(mainFrame,"❌ Order ID not found!");
                     }
@@ -419,7 +397,13 @@ public class RestaurantApp {
                 }
             }
         });
-        
+
+        // All Orders -> open popup window
+        allOrdersBtn.addActionListener(e -> {
+            AllOrdersWindow window = new AllOrdersWindow(dataStore);
+            window.setVisible(true);
+        });
+
         mainFrame.add(new JScrollPane(menuPanel),BorderLayout.CENTER);
         mainFrame.add(controlPanel,BorderLayout.SOUTH);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -439,11 +423,19 @@ public class RestaurantApp {
               .append(" = ").append(oi.getTotalPrice())
               .append("৳\n\n");
         }
-        // sb.append("Total: ").append(order.generateBill()).append("৳");
         JOptionPane.showMessageDialog(mainFrame,sb.toString(),"Order Found",JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private void showBill(Order order){
+    // UPDATED bill dialog: shows OK and Paid buttons. Paid deletes order from dataStore.
+    private void showBillWithActions(Order order){
+        JDialog dialog = new JDialog(mainFrame, "Bill for Order " + order.getOrderId(), true);
+        dialog.setSize(350, 400);
+        dialog.setLocationRelativeTo(mainFrame);
+        dialog.setLayout(new BorderLayout());
+
+        JTextArea billArea = new JTextArea();
+        billArea.setEditable(false);
+
         StringBuilder bill = new StringBuilder("-----------|  Bill  |-----------\n");
         bill.append("Order ID: ").append(order.getOrderId()).append("\nItems:\n");
         for(OrderItem oi : order.getItems()){
@@ -452,9 +444,34 @@ public class RestaurantApp {
                 .append(" = ").append(oi.getTotalPrice())
                 .append("৳\n");
         }
-        bill.append("___________________\n");
+        bill.append("-------------------------------\n");
         bill.append("Total: ৳").append(order.generateBill()).append("\n\n");
-        JOptionPane.showMessageDialog(mainFrame,bill.toString(),"Bill for Order "+order.getOrderId(),JOptionPane.INFORMATION_MESSAGE);
+        billArea.setText(bill.toString());
+
+        dialog.add(new JScrollPane(billArea), BorderLayout.CENTER);
+
+        JPanel btnPanel = new JPanel();
+        JButton okBtn = new JButton("OK");
+        JButton paidBtn = new JButton("Paid");
+
+        okBtn.addActionListener(e -> dialog.dispose());
+
+        paidBtn.addActionListener(e -> {
+            // Delete order from DataStore
+            boolean removed = dataStore.deleteOrder(order);
+            dialog.dispose();
+            if(removed){
+                JOptionPane.showMessageDialog(mainFrame, "Order " + order.getOrderId() + " marked as Paid and removed.");
+            } else {
+                JOptionPane.showMessageDialog(mainFrame, "Order could not be removed (maybe already deleted).");
+            }
+        });
+
+        btnPanel.add(okBtn);
+        btnPanel.add(paidBtn);
+
+        dialog.add(btnPanel, BorderLayout.SOUTH);
+        dialog.setVisible(true);
     }
 
     public static void main(String[] args){
