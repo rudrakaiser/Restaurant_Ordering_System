@@ -57,17 +57,22 @@ src/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/rudrakaiser/Restaurant_Ordering_System
+   git clone https://github.com/rudrakaiser/Restaurant-Ordering-System
    ```
 
-2. Compile the project:
+2. Go to the cloned folder:
 
    ```bash
-   cd Restaurant_Ordering_System
+   cd Restaurant-Ordering-System
+   ```
+
+3. Compile the project:
+
+   ```bash
    javac src/*.java
    ```
 
-3. Run the application:
+4. Run the application:
 
    ```bash
    java src/RestaurantApp
