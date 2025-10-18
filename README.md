@@ -35,7 +35,7 @@ The application allows customers' **orders to be placed, stored, and bills to be
 ## 🏗️ Project Structure
 
 ```
-restaurant/
+src/
 ├── DataStore.java             // Stores all orders using HashMap
 ├── MenuItem.java              // Abstract base class (name, price, getCategory)
 ├── FoodItem.java              // Inherits MenuItem, adds 'type' (Main/Dessert etc.)
@@ -57,20 +57,20 @@ restaurant/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/restaurant-management.git
-   cd restaurant-management
+   git clone https://github.com/rudrakaiser/Restaurant_Ordering_System
    ```
 
 2. Compile the project:
 
    ```bash
-   javac src/restaurant/*.java
+   cd Restaurant_Ordering_System
+   javac src/*.java
    ```
 
 3. Run the application:
 
    ```bash
-   java src/restaurant/RestaurantApp
+   java src/RestaurantApp
    ```
 
 ---
